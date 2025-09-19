@@ -9,59 +9,29 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            'bg': 'var(--color-bg)',
-            'card': 'var(--color-card)',
-            'text': 'var(--color-text)',
-            'muted': 'var(--color-muted)',
-            'accent': 'var(--color-accent)',
-            'accent-hover': 'var(--color-accent-hover)',
-            'danger': 'var(--color-danger)',
-            'danger-hover': 'var(--color-danger-hover)',
-            'border': 'var(--color-border)',
-            'border-light': 'var(--color-border-light)',
+            'bg': '#0f172a',
+            'card': '#111827',
+            'text': '#f1f5f9',
+            'muted': '#94a3b8',
+            'accent': '#3b82f6',
+            'accent-hover': '#2563eb',
+            'danger': '#ef4444',
+            'danger-hover': '#dc2626',
+            'border': '#1e293b',
+            'border-light': '#334155',
           }
         }
       }
     }
   </script>
   <style>
-    :root {
-      --color-bg: #ffffff;
-      --color-card: #f9fafb;
-      --color-text: #111827;
-      --color-muted: #6b7280;
-      --color-accent: #8b5cf6;
-      --color-accent-hover: #7c3aed;
-      --color-danger: #ef4444;
-      --color-danger-hover: #dc2626;
-      --color-border: #e5e7eb;
-      --color-border-light: #f3f4f6;
-    }
-    html.dark {
-      --color-bg: #0f172a;
-      --color-card: #1e293b;
-      --color-text: #f1f5f9;
-      --color-muted: #94a3b8;
-      --color-accent: #a78bfa;
-      --color-accent-hover: #8b5cf6;
-      --color-danger: #f87171;
-      --color-danger-hover: #ef4444;
-      --color-border: #334155;
-      --color-border-light: #475569;
-    }
-  </style>
-  <style>
     body {
       font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell, sans-serif;
-      background-color: var(--color-bg);
-      min-height: 100vh;
-    }
-    html.dark body {
       background: linear-gradient(135deg, #0b1223 0%, #0f172a 50%, #0a0f1c 100%);
+      min-height: 100vh;
     }
     
     @keyframes fadeIn {
@@ -78,20 +48,16 @@
 
 <body>
   <div class="max-w-2xl mx-auto my-16 px-5 md:my-16 my-5 md:px-5 px-4">
-    <div class="bg-card border border-border rounded-2xl p-8 md:p-8 p-6 shadow-xl dark:shadow-2xl animate-fade-in" role="application" aria-label="Todo app">
-      <header class="mb-8 relative">
+    <div class="bg-card border border-border rounded-2xl p-8 md:p-8 p-6 shadow-2xl backdrop-blur-sm animate-fade-in" role="application" aria-label="Todo app">
+      <header class="mb-8">
         <h1 class="text-3xl font-bold mb-3 bg-gradient-to-r from-text to-muted bg-clip-text text-transparent">Toro</h1>
         <div class="text-muted text-base leading-relaxed">Your personal task manager</div>
-        <button id="theme-toggle" class="absolute top-0 right-0 text-muted hover:text-accent transition-colors duration-200 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800">
-          <svg id="theme-icon-light" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-          <svg id="theme-icon-dark" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-        </button>
       </header>
 
       <section class="mb-6">
         <div class="flex gap-3 items-center md:flex-row flex-col">
           <input id="newTodo" type="text" placeholder="What needs to be done?" aria-label="New todo" 
-                 class="flex-1 px-4 py-3.5 rounded-xl border border-border-light bg-transparent dark:bg-slate-900/80 text-text text-base transition-all duration-200 focus:outline-none focus:border-accent focus:ring-3 focus:ring-accent/10 placeholder:text-muted w-full" />
+                 class="flex-1 px-4 py-3.5 rounded-xl border border-border-light bg-slate-900/80 text-text text-base transition-all duration-200 focus:outline-none focus:border-accent focus:ring-3 focus:ring-accent/10 placeholder:text-muted w-full" />
           <button id="addBtn" aria-label="Add todo" 
                   class="px-5 py-3.5 rounded-xl bg-accent text-white font-semibold text-sm cursor-pointer transition-all duration-200 hover:bg-accent-hover hover:-translate-y-0.5 whitespace-nowrap md:w-auto w-full">Add Task</button>
         </div>
@@ -115,7 +81,7 @@
           <span id="count">0</span> tasks • <span id="storage"></span>
         </div>
         <div class="text-xs opacity-80">
-          <span class="kbd px-2 py-1 border border-border-light rounded text-xs text-muted bg-slate-200/50 dark:bg-slate-900/50">Enter</span> to add •
+          <span class="kbd px-2 py-1 border border-border-light rounded text-xs text-muted bg-slate-900/50">Enter</span> to add •
         </div>
       </footer>
 
@@ -131,36 +97,6 @@
 
   <script>
     $(document).ready(function() {
-      // --- Theme Switcher ----------------------------------------------------
-      const THEME_KEY = "theme";
-      const themeToggle = $("#theme-toggle");
-      const lightIcon = $("#theme-icon-light");
-      const darkIcon = $("#theme-icon-dark");
-
-      function applyTheme(theme) {
-        if (theme === 'dark') {
-          $('html').addClass('dark');
-          darkIcon.removeClass('hidden');
-          lightIcon.addClass('hidden');
-        } else {
-          $('html').removeClass('dark');
-          lightIcon.removeClass('hidden');
-          darkIcon.addClass('hidden');
-        }
-      }
-
-      // On page load, apply saved theme or default to dark
-      const savedTheme = localStorage.getItem(THEME_KEY) || 'dark';
-      applyTheme(savedTheme);
-
-
-      themeToggle.on('click', function() {
-        const isDark = $('html').hasClass('dark');
-        const newTheme = isDark ? 'light' : 'dark';
-        applyTheme(newTheme);
-        localStorage.setItem(THEME_KEY, newTheme);
-      });
-
       // --- Storage & State ------------------------------------------------------
       const LS_KEY = "todos.v1";
       const state = {
@@ -265,7 +201,7 @@
         // Inline editing
         $li.find('span').on('dblclick', function() {
           const $span = $(this);
-          const $input = $(`<input class="flex-1 px-3 py-2 rounded-lg border border-accent bg-white dark:bg-slate-900/90 text-text text-base" value="${todo.title}">`);
+          const $input = $(`<input class="flex-1 px-3 py-2 rounded-lg border border-accent bg-slate-900/90 text-text text-base" value="${todo.title}">`);
           
           $span.replaceWith($input);
           $input.focus().select();
